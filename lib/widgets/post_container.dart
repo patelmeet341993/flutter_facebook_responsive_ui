@@ -15,6 +15,8 @@ class PostContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    print("${post.caption}:  ${post.imageUrl}");
     final bool isDesktop = Responsive.isDesktop(context);
     return Card(
       margin: EdgeInsets.symmetric(
@@ -22,21 +24,19 @@ class PostContainer extends StatelessWidget {
         horizontal: isDesktop ? 5.0 : 0.0,
       ),
       elevation: isDesktop ? 1.0 : 0.0,
-      shape: isDesktop
-          ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
-          : null,
+    //  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         color: Colors.white,
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              padding:  EdgeInsets.symmetric(horizontal: 12.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   _PostHeader(post: post),
-                  const SizedBox(height: 4.0),
+                   SizedBox(height: 4.0),
                   Text(post.caption),
                   post.imageUrl != null
                       ? const SizedBox.shrink()
@@ -44,12 +44,9 @@ class PostContainer extends StatelessWidget {
                 ],
               ),
             ),
-            post.imageUrl != null
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: CachedNetworkImage(imageUrl: post.imageUrl),
-                  )
-                : const SizedBox.shrink(),
+           Padding(padding:  EdgeInsets.symmetric(vertical: 8.0),
+                    child:Image.network("https://picsum.photos/500"),),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: _PostStats(post: post),

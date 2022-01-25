@@ -98,7 +98,8 @@ class _HomeScreenMobile extends StatelessWidget {
           delegate: SliverChildBuilderDelegate(
             (context, index) {
               final Post post = posts[index];
-              return PostContainer(post: post);
+              return Container();
+             // return PostContainer(post: post);
             },
             childCount: posts.length,
           ),
@@ -157,7 +158,8 @@ class _HomeScreenDesktop extends StatelessWidget {
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
-                    final Post post = posts[index];
+                    final Post post = posts[0];
+                    print("Post : ${post.imageUrl}");
                     return PostContainer(post: post);
                   },
                   childCount: posts.length,
